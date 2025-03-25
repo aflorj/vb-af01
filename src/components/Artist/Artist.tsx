@@ -65,8 +65,6 @@ export default function Artist() {
                 />
               </div>
             </div>
-          </div>
-          <div className="col-wrapper">
             <ArtistMostPopularIn mostPopularIn={artist?.most_popular_in} />
           </div>
           <button className="btn btn-scroll-down">Scroll down</button>
