@@ -1,0 +1,5 @@
+- `$ git clone https://github.com/aflorj/vb-af01.git vb-af01`
+- `$ cd vb-af01`
+- `$ npm i`
+- `$ echo "VITE_API_HOST=enter_api_url_here" > .env`
+- `$ npm run dev`
