@@ -20,7 +20,6 @@ export default function Artist() {
       url: `${import.meta.env.VITE_API_HOST}/api/v1/${uuid}`,
     })
       .then((res) => {
-        console.log('res: ', res);
         setArtist(res?.data?.data);
         setIsFetching(false);
       })

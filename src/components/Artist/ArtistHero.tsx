@@ -10,7 +10,7 @@ export default function ArtistHero({ imageUrl, isClaimed }: IArtistHeroProps) {
     <div className="col visual">
       <figure
         style={{
-          backgroundImage: `url(${imageUrl})`,
+          backgroundImage: `url(${imageUrl})`, // could add fallback image here
         }}
       >
         {!isClaimed && (

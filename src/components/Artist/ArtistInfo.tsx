@@ -11,6 +11,7 @@ interface IArtistInfoProps {
   genreName: IArtist['genre']['name'];
   subgenres: IArtist['subgenres'];
 }
+
 export default function ArtistInfo({
   isBookingAvailable,
   name,
@@ -22,6 +23,7 @@ export default function ArtistInfo({
   subgenres,
 }: IArtistInfoProps) {
   const [isCopied, setIsCopied] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(isBookmarked);
 
   const copyToClipboard = () => {
     setIsCopied(true);
@@ -51,7 +53,12 @@ export default function ArtistInfo({
       </div>
 
       <div className="row">
-        {!isBookmarked && <button className="btn btn-save long">Follow</button>}
+        <button
+          className={`btn btn-save long ${isFollowing && 'active'}`}
+          onClick={() => setIsFollowing(!isFollowing)}
+        >
+          Follow
+        </button>
         <button
           className={`btn btn-share ${isCopied && 'copied'}`}
           onClick={() => copyToClipboard()}
@@ -74,7 +81,9 @@ export default function ArtistInfo({
       <div className="row">
         <label>Subgenres</label>
         {subgenres?.map((subgenre) => (
-          <span className="btn btn-filter-tag">{subgenre.name}</span>
+          <span className="btn btn-filter-tag" key={subgenre?.id}>
+            {subgenre?.name}
+          </span>
         ))}
 
         <div className="tooltip-wrapper">
@@ -87,8 +96,8 @@ export default function ArtistInfo({
             </p>
             <div className="stats-sheet">
               {subgenres?.map((subgenre) => (
-                <div className="row">
-                  <h5>{subgenre.name}</h5>
+                <div className="row" key={subgenre?.id}>
+                  <h5>{subgenre?.name}</h5>
                   <div className="graph-line">
                     <span className="line" style={{ width: '99%' }}>
                       99%

@@ -14,7 +14,7 @@ export default function ArtistSocials({
       <ul className="social-list">
         {socialLinks &&
           socialLinks?.map((socialLink) => (
-            <li>
+            <li key={socialLink?.channel}>
               <a
                 href={socialLink?.link}
                 className={`btn social-icon ${socialLink?.channel}`} // dynamic class blindly assumes we have icons for all the channel API returns

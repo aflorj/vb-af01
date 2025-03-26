@@ -6,7 +6,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const params = useParams();
 
-  const [isFetching, setIsFetching] = useState(true);
+  const [isFetching, setIsFetching] = useState(true); // used to toggle the full screen loader, like on the current app
   const [artists, setArtists] = useState<null | INavArtist[]>(null);
 
   interface INavArtist {
@@ -52,7 +52,7 @@ export default function Navbar() {
 
       <ul className="menu">
         {artists?.map((artist) => (
-          <li>
+          <li key={artist.artist_uuid}>
             <NavLink key={artist.artist_uuid} to={`/${artist.artist_uuid}`}>
               {artist.artist_name}
             </NavLink>
